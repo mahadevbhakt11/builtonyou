@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free: The Walmart Playbook Cheat Sheet — Built On You</title>
+<meta name="description" content="Sam Walton's whole business system on one printable page. Free download from Built On You.">
+<meta property="og:title" content="Free: The Walmart Playbook Cheat Sheet">
+<meta property="og:image" content="../../assets/walmart/cheatsheet.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>
+  // ===== SETTINGS =====
+  // Where sign-ups are sent. Leave empty to skip email capture and show the download straight away.
+  // Paste the form endpoint from your email tool (e.g. a Kit/ConvertKit, MailerLite or Beehiiv form URL).
+  window.EMAIL_ENDPOINT = "";
+  window.FILE_URL = "../../assets/walmart/walmart-cheat-sheet.pdf";
+</script>
+</head>
+<body>
+
+<div class="wrap"><nav><a class="logo" href="../../">BUILT ON YOU</a><a class="small" href="../">The full Playbook →</a></nav></div>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="kicker">Free download · 1-page cheat sheet</div>
+      <h1>Walmart's whole system on one page</h1>
+      <p class="lead">The four moats Sam Walton used to beat every rival, plus the pricing formula and weekly habits you can copy this week. Print it, pin it, use it.</p>
+      <div class="optin" id="optin">
+        <form id="form" novalidate>
+          <label for="name">First name</label>
+          <input id="name" name="first_name" autocomplete="given-name" placeholder="Your first name">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+          <button class="btn" type="submit">Send me the cheat sheet →</button>
+          <div class="fine" id="msg">Free. We'll also send you the next playbook when it's out. Unsubscribe anytime.</div>
+        </form>
+        <div class="done" id="done">
+          <h3>It's yours 🎉</h3>
+          <p>Your cheat sheet is ready.</p>
+          <a class="btn blue" id="dl" href="#" download>Download the PDF ↓</a>
+        </div>
+      </div>
+    </div>
+    <div class="sheet"><img src="../../assets/walmart/cheatsheet.jpg" alt="The Walmart Playbook cheat sheet" width="816" height="1056"></div>
+  </div>
+</header>
+
+<section class="ink">
+  <div class="wrap">
+    <div class="center"><div class="kicker">On the sheet</div><h2>The whole system, at a glance</h2></div>
+    <div class="cards">
+      <div class="card" style="background:rgba(255,255,255,.06);color:var(--paper);border-color:rgba(255,255,255,.25)"><div class="big" style="color:var(--spark)">01</div><h3>Location</h3><p>Start where giants don't bother, then fill the region.</p></div>
+      <div class="card" style="background:rgba(255,255,255,.06);color:var(--paper);border-color:rgba(255,255,255,.25)"><div class="big" style="color:var(--spark)">02</div><h3>Logistics</h3><p>Goods and work should never sit. Kill the longest wait.</p></div>
+      <div class="card" style="background:rgba(255,255,255,.06);color:var(--paper);border-color:rgba(255,255,255,.25)"><div class="big" style="color:var(--spark)">03</div><h3>Data &amp; price</h3><p>Share numbers with suppliers; cut price only when the maths works.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- UPSELL -->
+<section>
+  <div class="wrap split">
+    <div class="book" style="max-width:330px"><img src="../../assets/walmart/cover.jpg" alt="The Walmart Playbook cover" width="816" height="1056"><div class="badge"><span>$7.99</span>launch</div></div>
+    <div>
+      <div class="kicker">Want the whole machine?</div>
+      <h2>The full Walmart Playbook</h2>
+      <p class="lead">The cheat sheet is the summary. The full guide is the system: 31 pages with every moat drawn out, 6 frameworks, 5 worksheets, plays for your type of business and a 30-day plan.</p>
+      <div class="price"><span class="now">$7.99</span><span class="was">$24.99</span><span class="save">Save 68%</span></div>
+      <a class="btn" href="../">See what's inside →</a>
+      <div class="fine">Optional. The cheat sheet is yours either way.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap">
+    <div><b style="color:var(--paper);font-family:Fraunces,serif;letter-spacing:.06em">BUILT ON YOU</b><br>Business history, rebuilt for builders. <a href="https://www.youtube.com/@builtonyou">Watch on YouTube</a></div>
+    <div style="max-width:520px">Walmart is a trademark of Walmart Inc. This guide is independent and not affiliated with or endorsed by Walmart.</div>
+  </div>
+</footer>
+
+<script>
+  var form = document.getElementById("form"), msg = document.getElementById("msg");
+  document.getElementById("dl").href = window.FILE_URL;
+  function reveal() { form.style.display = "none"; document.getElementById("done").classList.add("show"); }
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var email = form.email.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = "Please enter a valid email address."; msg.style.color = "#b8322a"; form.email.focus(); return; }
+    if (!window.EMAIL_ENDPOINT) { reveal(); return; }
+    var btn = form.querySelector("button"); btn.disabled = true; btn.textContent = "Sending…";
+    fetch(window.EMAIL_ENDPOINT, { method: "POST", body: new FormData(form), mode: "no-cors" })
+      .then(reveal)
+      .catch(function () { msg.textContent = "Couldn't sign you up just now, but here's your download."; reveal(); });
+  });
+</script>
+</body>
+</html>
